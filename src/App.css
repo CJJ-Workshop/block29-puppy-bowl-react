@@ -17,8 +17,8 @@
 In an effort to make this as modular as possible I will make every color a variable
 */
 :root {
-  --primary: #134f80;
-  --secondary: #1e77aa;
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
   --dark: #1f2937;
   --light: #f9fafb;
   --code-bg: #282a36;
@@ -226,7 +226,7 @@ footer {
 }
 
 /* Set up the grid for the feature cards and the cards. These are used on the home page below the header and in the introduction doc */
-.feature-grid {
+.feature-grid, .player-card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
@@ -262,9 +262,21 @@ footer {
   
 }
 /* Set up the CTA, primary and secondary buttons and table */
-.cta-button {
+.cta-button, .back-btn, .details-btn {
   display: inline-block;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--text-color);
+  padding: 0.75rem 1.5rem;
+  margin: 5px 0px;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.remove-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, red, rgb(93, 3, 3));
   color: var(--text-color);
   padding: 0.75rem 1.5rem;
   margin: 5px 0px;
