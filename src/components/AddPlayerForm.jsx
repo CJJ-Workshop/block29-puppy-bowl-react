@@ -41,7 +41,7 @@ const AddPlayerForm = ({ onPlayerAdded }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add New Player</h2>
+      <h1>Add New Player</h1>
       {error && <p>{error}</p>}
       <input
         type="text"
@@ -67,7 +67,7 @@ const AddPlayerForm = ({ onPlayerAdded }) => {
         className="playerImage"
         required
       />
-      <button type="submit">Add Player</button>
+      <button type="submit" className="primary-btn">Add Player</button>
     </form>
   );
 };

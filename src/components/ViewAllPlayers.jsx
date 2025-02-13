@@ -28,14 +28,18 @@ export default function ViewAllPlayers() {
 
   return (
     <>
+    <div className="content-card">
+    <div className="feature-grid">
       {players?.map((player) => {
         return (
-          <div key={player.id}>
-            <h1>{player.name}</h1>
+          <div className="feature-card" key={player.id}>
+            <h3>{player.name}</h3>
             <p>{player.breed}</p>
           </div>
         );
       })}
+      </div>
+      </div>
     </>
   );
 }
