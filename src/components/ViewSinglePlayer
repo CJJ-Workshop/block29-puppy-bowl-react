@@ -1,0 +1,37 @@
+// Imports - like useState, useEffect, css
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+const cohort = "2410-FTB-ET-WEB-AM";
+const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohort}/players`;
+
+// The Component
+const ViewSinglePlayer = () => {
+  //State varibles
+  const [player, setPlayer] = useState();
+  const { playerId } = useParams();
+
+  // Fetching APIS
+  const fetchSinglePlayer = async (playerId) => {
+    try {
+      // TODO
+      const response = await fetch(`${API_URL}/${playerId}`);
+      const data = await response.json();
+      console.log(data);
+      if (data.player) {
+        return data.player;
+      }
+      console.error(`No player found with ID: ${playerId}`);
+    } catch (err) {
+      console.error(`Oh no, trouble fetching player #${playerId}!`, err);
+    }
+  };
+  useEffect(() => {
+    fetchSinglePlayer(playerId);
+  }, []);
+  //Return the html
+  return <div></div>;
+};
+
+// Exports the component to use in a different place
+export default ViewSinglePlayer;
