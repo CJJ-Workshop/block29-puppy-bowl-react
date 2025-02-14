@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { RemovePlayerButton } from "./RemovePlayerButton"; //for the button
+
 
 export default function ViewAllPlayers() {
   const [players, setPlayers] = useState();
@@ -26,6 +28,8 @@ export default function ViewAllPlayers() {
     fetchPlayers();
   }, []);
 
+
+  //Build and return player cards by player ID. 
   return (
     <>
       <div className="content-card">
@@ -33,8 +37,13 @@ export default function ViewAllPlayers() {
           {players?.map((player) => {
             return (
               <div className="feature-card" key={player.id}>
+                <img src={player.imageUrl} alt={player.name} />
                 <h3>{player.name}</h3>
-                <p>{player.breed}</p>
+                <p>Breed: {player.breed}</p>
+                <p>Age: {player.age}</p>
+                <p>Team: {player.teamId}</p>
+                <p>Status: {player.status}</p>
+                <RemovePlayerButton playerId={player.id} onRemove={() => setPlayers(players.filter(p => p.id !== player.id))} />
               </div>
             );
           })}

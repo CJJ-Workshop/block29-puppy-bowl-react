@@ -35,7 +35,7 @@ In an effort to make this as modular as possible I will make every color a varia
   --background: #ffffff;
   --text-color: #e3e3e3;
   --sidebar-width: 280px;
-  --img-max-width: 300px;
+  --img-max-width: 200px;
 }
 
 * {
@@ -47,6 +47,7 @@ In an effort to make this as modular as possible I will make every color a varia
 
 img {
   max-width: var(--img-max-width);
+  max-height: auto;
   border-radius: 2%;
   
 }
