@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import ViewSinglePlayer from "./components/ViewSinglePlayer";
+import ViewSinglePlayer from "./components/ViewSinglePlayer.jsx";
 function App() {
   return (
     <>
