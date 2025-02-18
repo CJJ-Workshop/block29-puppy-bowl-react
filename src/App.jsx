@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { useEffect } from 'react'
-import './App.css';
-import Modal from './components/Modal.jsx';
-import ViewAllPlayers from './components/ViewAllPlayers';
-import AddPlayerForm from './components/AddPlayerForm';
-import SearchBar from './components/SearchBar'
+import { useState } from "react";
+import { useEffect } from "react";
+import "./App.css";
+import Modal from "./components/Modal.jsx";
+import ViewAllPlayers from "./components/ViewAllPlayers";
+import AddPlayerForm from "./components/AddPlayerForm";
+import SearchBar from "./components/SearchBar";
 
+import { Routes, Route } from "react-router-dom";
+import ViewSinglePlayer from "./components/ViewSinglePlayer.jsx";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false); // 🔹 Fix: Define state
   const [players, setPlayers] = useState([]);
@@ -33,10 +35,10 @@ function App() {
     fetchPlayers();
   }, []);
 
-  const filteredPlayers = players.filter((player) => 
-    player.name.toLowerCase().includes(search.toLowerCase()));
-    console.log("players = ", players)
-
+  const filteredPlayers = players.filter((player) =>
+    player.name.toLowerCase().includes(search.toLowerCase())
+  );
+  console.log("players = ", players);
 
   return (
     <div className="app-container">
@@ -51,8 +53,14 @@ function App() {
         </Modal>
       )}
 
-      <SearchBar setSearch={setSearch}/>
-      <ViewAllPlayers  players={filteredPlayers}/>
+      <SearchBar setSearch={setSearch} />
+      <ViewAllPlayers players={filteredPlayers} />
+      <>
+        <Routes>
+          {/* <Route path="/players" element={<h1>Blue</h1>} /> */}
+          <Route path="/players/:playerId" element={<ViewSinglePlayer />} />
+        </Routes>
+      </>
     </div>
   );
 }
