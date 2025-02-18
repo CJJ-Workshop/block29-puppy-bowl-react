@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { useEffect } from 'react'
-import './App.css'
-import ViewAllPlayers  from './components/ViewAllPlayers'
-import AddPlayerForm from './components/AddPlayerForm'
+import './App.css';
+import Modal from './components/Modal.jsx';
+import ViewAllPlayers from './components/ViewAllPlayers';
+import AddPlayerForm from './components/AddPlayerForm';
 import SearchBar from './components/SearchBar'
 
 function App() {
-
+  const [isModalOpen, setIsModalOpen] = useState(false); // 🔹 Fix: Define state
   const [players, setPlayers] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -36,13 +37,24 @@ function App() {
     player.name.toLowerCase().includes(search.toLowerCase()));
     console.log("players = ", players)
 
+
   return (
-    <>
-      <AddPlayerForm />
+    <div className="app-container">
+      <h1>Puppy Bowl!</h1>
+      <button onClick={() => setIsModalOpen(true)} className="details-btn">
+        Add New Player
+      </button>
+
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <AddPlayerForm onPlayerAdded={() => setIsModalOpen(false)} />
+        </Modal>
+      )}
+
       <SearchBar setSearch={setSearch}/>
       <ViewAllPlayers  players={filteredPlayers}/>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
