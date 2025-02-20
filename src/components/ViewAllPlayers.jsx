@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { RemovePlayerButton } from "./RemovePlayerButton"; //for the button
+import ViewSinglePlayer from "./ViewSinglePlayer";
 
 
 export default function ViewAllPlayers() {
